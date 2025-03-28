@@ -23,5 +23,7 @@ List of examples:
     - [prodconsmut](prodconsmut.md): A producer-consumer example using mutexes
       and condition variables.
 - Readers-writers.
-    - [multirewsem](multirewsem.md): A readers-writers example
+    - [multirwsem](multirwsem.md): A readers-writers example
       using semaphores.
+    - [multirwmut](multirwmut.md): A readers-writers example
+      using mutexes and condition variables.

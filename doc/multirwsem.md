@@ -21,6 +21,6 @@ When the writer is done, it signals the `sem_mutex` semaphore to allow
 another reader or writer to proceed.
 
 For this example 2 solutions are provided:
-- [C23 multirewsem](../c23/multirwsem/main.c): C solution using pthreads.
-- [C++23 multirewsem](../cpp23/multirwsem/main.cpp): C++ solution using
+- [C23 multirwsem](../c23/multirwsem/main.c): C solution using pthreads.
+- [C++23 multirwsem](../cpp23/multirwsem/main.cpp): C++ solution using
   `std::jthread`.
