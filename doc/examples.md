@@ -10,11 +10,11 @@ For each example, there is a C version and a C++ version.
 The C version is designed to be as simple as possible, but using modern C as
 much as possible.
 
-The C++ version tries to show the same concept in a way that is more type
-safe, using C++23 features where possible.
+The C++ version tries to show the same concept in a way that is more type safe,
+using C++23 features where possible.
 
 List of examples:
 
-- [add_consecutive](add_consecutive.md): Spawns two threads that add
-  consecutive numbers in two
-  separate variables, and then prints the result.
+- [add_consecutive](add_consecutive.md): Spawns two threads that add consecutive
+  numbers in two separate variables, and then prints the result.
+- [prodconssem](prodconssem.md): A producer-consumer example using semaphores.
