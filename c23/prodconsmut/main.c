@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <semaphore.h>
 #include <pthread.h>
 
 constexpr int buffer_size = 1024;
