@@ -1,7 +1,7 @@
 # multirwmut
 
 This example is a basic readers-writers program with multiple threads. It
-uses multiple readers and multiple writers thread.
+uses multiple reader and writer threads.
 The synchronization between the reader and writer threads is done using two
 mutexes: `readers_mutex` and `data_mutex`. 
 
