@@ -31,7 +31,7 @@ int main() {
       int const data = buffer.at(pos);
       pos = (++pos) % buffer_size;
       empty_slots.release();
-      std::print("{}\n", data);// Use std::print for output
+      std::println("{}", data);// Use std::print for output
     }
   };
 
