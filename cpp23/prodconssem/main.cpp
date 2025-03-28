@@ -13,23 +13,25 @@ int main() {
 
   // Lambda expression with code for producer
   auto producer = [&]() {
-    int pos = 0;
+    std::size_t pos = 0;
     for (int i = 0; i < num_elements; ++i) {
       int const data = i;// Generate data in some way
       empty_slots.acquire();
       buffer.at(pos) = data;
-      pos = (++pos) % buffer_size;
+      ++pos;
+      pos = pos % buffer_size;
       used_slots.release();
     }
   };
 
   // Lambda expression with code for consumer
   auto consumer = [&]() {
-    int pos = 0;
+    std::size_t pos = 0;
     for (int i = 0; i < num_elements; ++i) {
       used_slots.acquire();
       int const data = buffer.at(pos);
-      pos = (++pos) % buffer_size;
+      ++pos;
+      pos = pos % buffer_size;
       empty_slots.release();
       std::println("{}", data);// Use std::print for output
     }
