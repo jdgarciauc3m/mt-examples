@@ -23,7 +23,7 @@ The simplest way of building the examples is using cmake.
 
 This repo contains a Dockerfile that can be used to build the examples. Note 
 that in this case you will need to have Docker installed in your machine. 
-The docker image contains all what is needed to build the examples (gcc14, 
+The docker image contains everything that is needed to build the examples (GCC 14, 
 cmake, ...).
 
 From a command line where you have the Dockerfile, you can build the image 
