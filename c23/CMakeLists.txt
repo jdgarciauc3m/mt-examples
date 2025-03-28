@@ -1,2 +1,3 @@
 add_subdirectory(add_consecutive)
 add_subdirectory(prodconssem)
+add_subdirectory(prodconsmut)
