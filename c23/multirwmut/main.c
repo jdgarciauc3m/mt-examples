@@ -1,10 +1,13 @@
 #include <pthread.h>
 #include <stdio.h>
 
-int data = 42;
 constexpr int max_readers = 5;
 constexpr int max_writers = 4;
+constexpr int initial_value = 42;
+
+int data = initial_value;
 int num_readers = 0;
+
 pthread_mutex_t readers_mutex;
 pthread_mutex_t data_mutex;
 
