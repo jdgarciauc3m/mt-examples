@@ -21,6 +21,14 @@ The simplest way of building the examples is using cmake.
 
 ### Building with cmake on Docker
 
+This repo contains a Dockerfile that can be used to build the examples. Note 
+that in this case you will need to have Docker installed in your machine. 
+The docker image contains everything that is needed to build the examples (GCC 14, 
+cmake, ...).
+
+From a command line where you have the Dockerfile, you can build the image 
+and compile with:
+
 ```bash
 docker build -t mt-builder .
 docker run --rm -v $(pwd):/app -w /app mt-builder cmake --workflow --preset=all
@@ -35,6 +43,13 @@ docker run --rm -v $(pwd):/app -w /app mt-builder out/bin/add_consecutive
 ```
 
 ### Building with cmake on Linux
+
+In this case you will need a recent Linux distribution (e.g. Ubuntu 22.04) 
+and the following packages installed:
+- `cmake`.
+- `gcc` version 14 or later.
+
+From a command line, in the root of the repo, you can build the examples with:
 
 ```bash
 cmake --workflow --preset=all
