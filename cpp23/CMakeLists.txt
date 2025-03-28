@@ -3,3 +3,4 @@ add_subdirectory(add_consecutive_async)
 
 # Producer-Consumer problem
 add_subdirectory(prodconssem)
+add_subdirectory(prodconsmut)

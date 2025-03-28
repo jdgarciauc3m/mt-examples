@@ -17,4 +17,8 @@ List of examples:
 
 - [add_consecutive](add_consecutive.md): Spawns two threads that add consecutive
   numbers in two separate variables, and then prints the result.
-- [prodconssem](prodconssem.md): A producer-consumer example using semaphores.
+- Producer consumer.
+    - [prodconssem](prodconssem.md): A producer-consumer example using
+      semaphores.
+    - [prodconsmut](prodconsmut.md): A producer-consumer example using mutexes
+      and condition variables.
