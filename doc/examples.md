@@ -22,3 +22,6 @@ List of examples:
       semaphores.
     - [prodconsmut](prodconsmut.md): A producer-consumer example using mutexes
       and condition variables.
+- Readers-writers.
+    - [multirewsem](multirewsem.md): A readers-writers example
+      using semaphores.
