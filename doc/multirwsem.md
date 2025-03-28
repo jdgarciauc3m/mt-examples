@@ -1,8 +1,7 @@
 # multirwsem
 
 This example is a basic readers-writers program with multiple threads. It 
-uses multiple readers and multiple writers trhead.
-
+uses multiple readers and multiple writers thread.
 The synchronization between the reader and writer threads is done using two 
 semaphores: `sem_readers` and `sem_mutex`. The `sem_readers` semaphore is 
 used to keep mutual exclusion when updating the number of readers. The 
