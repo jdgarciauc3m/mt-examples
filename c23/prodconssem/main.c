@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <semaphore.h>
 #include <pthread.h>
+#include <semaphore.h>
+#include <stdio.h>
 
 constexpr int buffer_size = 1024;
 constexpr int num_elements = 100'000;
@@ -13,8 +13,8 @@ void * producer(void *);
 void * consumer(void *);
 
 int main(void) {
-  sem_init(&used_slots, 0, 0); // Initially: no used slots
-  sem_init(&empty_slots, 0, buffer_size); // Initially: All empty slots
+  sem_init(&used_slots, 0, 0);           // Initially: no used slots
+  sem_init(&empty_slots, 0, buffer_size);// Initially: All empty slots
 
   pthread_t th_producer;
   pthread_create(&th_producer, nullptr, producer, nullptr);
@@ -31,7 +31,7 @@ int main(void) {
 void * producer(void *) {
   int pos = 0;
   for (int i = 0; i < num_elements; ++i) {
-    int data = i;  // Generate data somehow
+    int data = i;// Generate data somehow
     sem_wait(&empty_slots);
     buffer[pos] = data;
     pos = (pos + 1) % buffer_size;
