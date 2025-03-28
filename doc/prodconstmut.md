@@ -22,7 +22,7 @@ For this example 2 solutions are provided:
 
 ## Notes on the C23 version
 
-The buffer and the syncrhonization variables are defined as global variables.
+The buffer and the synchronization variables are defined as global variables.
 The thread logic are implemented in separate functions, and the main function
 creates the corresponding threads and waits for them to finish.
 
