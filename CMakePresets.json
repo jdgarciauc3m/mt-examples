@@ -1,0 +1,45 @@
+{
+  "version": 9,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 30,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "description": "Default configuration",
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "installDir": "${sourceDir}/out/bin/${presetName}",
+      "cacheVariables": {
+        "CMAKE_CONFIGURATION_TYPES": "Release;Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
+        "CMAKE_CXX_FLAGS": "-Wall -Wextra -Weffc++ -Werror -pedantic -pedantic-errors -Wconversion -Wsign-conversion",
+        "CMAKE_C_FLAGS": "-Wall -Wextra -Werror -pedantic -pedantic-errors -Wconversion -Wsign-conversion"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug",
+      "configurePreset": "default",
+      "configuration": "Debug"
+    },
+    {
+      "name": "release",
+      "configurePreset": "default",
+      "configuration": "Release"
+    }
+  ],
+  "workflowPresets": [
+    {
+      "name": "all",
+      "steps": [
+        { "type": "configure" , "name":  "default" },
+        { "type": "build" , "name":  "debug" },
+        { "type": "build" , "name":  "release" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+add_executable(add_consecutive_cpp main.cpp)
+install(TARGETS add_consecutive_cpp)
