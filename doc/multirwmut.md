@@ -9,9 +9,8 @@ The `readers_mutex` mutex is used to keep mutual exclusion when updating the
 number of readers. The `data_mutex` mutex is used to keep mutual exclusion 
 when accessing the shared data.
 
-When the first reader arrives, it locks the `readers_mutex` mutex to ensure 
-that now writers are currently writing. 
-
+When the first reader arrives, it locks the `data_mutex` mutex to block 
+writers from accessing the shared data while readers are reading.
 When the last reader leaves, it unlocks the `readers_mutex` mutex to allow a 
 writer to proceed.
 
