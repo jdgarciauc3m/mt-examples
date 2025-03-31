@@ -8,3 +8,6 @@ add_subdirectory(prodconsmut)
 # Multiple readers and writers
 add_subdirectory(multirwsem)
 add_subdirectory(multirwmut)
+
+# Server examples
+add_subdirectory(server)
