@@ -24,7 +24,8 @@ namespace server {
   };
 
   request receive_request();
-  void reply_request(request &req);
+  void process_request(request &req);
+  void reply_request(request const &req);
 
 }// namespace server
 
