@@ -10,6 +10,7 @@ int main() {
   time_t t1 = time(nullptr);
   for (int i = 0; i < max_requests; i++) {
     receive_request(&req);
+    process_request(&req);
     reply_request(&req);
   }
   time_t t2 = time(nullptr);

@@ -12,7 +12,8 @@ int main() {
   const auto start = high_resolution_clock::now();
   for (int i = 0; i < max_requests; i++) {
     auto req = receive_request();
-    reply_request(req);
+    req.process();
+    req.reply();
   }
   const auto stop = high_resolution_clock::now();
   const auto diff = duration_cast<seconds>(stop - start);

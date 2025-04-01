@@ -12,6 +12,10 @@ namespace server {
 
     [[nodiscard]] long id() const { return id_; }
     void update_data(int value) { data +=value; }
+
+    void process();
+    void reply() const;
+
   private:
     long id_;
     // Rest of the request fields
@@ -24,8 +28,6 @@ namespace server {
   };
 
   request receive_request();
-  void process_request(request &req);
-  void reply_request(request const &req);
 
 }// namespace server
 

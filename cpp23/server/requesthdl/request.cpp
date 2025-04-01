@@ -33,23 +33,23 @@ namespace server {
     return req;
   }
 
-  void process_request(request & req) {
-    std::println(std::cerr, "Processing request with ID: {}", req->id);
+  void request::process() {
+    std::println(std::cerr, "Processing request with ID: {}", id());
 
     // Simulate processing time;
-    for (int i = 0; i < max_processing_iterations; i++) { req.update_data(i); }
+    for (int i = 0; i < max_processing_iterations; i++) { update_data(i); }
 
-    std::println(std::cerr, "Request with ID: {} processed", req.id());
+    std::println(std::cerr, "Request with ID: {} processed", id());
   }
 
-  void reply_request(request const & req) {
-    std::println(std::cerr, "Replying to request with ID: {}", req.id());
+  void request::reply() const {
+    std::println(std::cerr, "Replying to request with ID: {}", id());
 
     // Simulate replying to a request
     auto delay = send_time(generator);                       // Simulate a random delay
     std::this_thread::sleep_for(std::chrono::seconds(delay));// Simulate send time
 
-    std::println(std::cerr, "Request with ID: {} replied after {} seconds", req.id(), delay);
+    std::println(std::cerr, "Request with ID: {} replied after {} seconds", id(), delay);
   }
 
 }// namespace server
