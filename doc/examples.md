@@ -29,4 +29,6 @@ List of examples:
       using mutexes and condition variables.
 - Server.
 -   - [requesthdl](requesthdl.md): A small library to simulate request handling.
--   - [srvseq](srvsec.md): A simple server that handles requests sequentially.
+-   - [srvseq](srvseq.md): A simple server that handles requests sequentially.
+-   - [srvproc](srvproc.md): A simple server that handles requests on new 
+      processes on demand.
