@@ -14,7 +14,7 @@ namespace server {
 
     // NOLINTBEGIN(cppcoreguidelines-avoid-non-const-global-variables)
     int request_id = 0;
-    std::minstd_rand0 generator;
+    std::minstd_rand generator;
     std::uniform_int_distribution<unsigned int> receive_time {0, max_receive_time};
     std::uniform_int_distribution<unsigned int> send_time {0, max_send_time};
     // NOLINTEND(cppcoreguidelines-avoid-non-const-global-variables)
