@@ -1,14 +1,14 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
+#include <time.h>
 
 // POSIX headers
 #include <sched.h>
-#include <wait.h>
 #include <unistd.h>
+#include <wait.h>
 
+// Server library
 #include "request.h"
-
 
 int main() {
   constexpr int max_requests = 5;
@@ -23,11 +23,11 @@ int main() {
     do {
       fprintf(stderr, "Waiting for children\n");
       pid = waitpid(-1, nullptr, WNOHANG);
-      if (pid>0) {
+      if (pid > 0) {
         nchildren--;
         fprintf(stderr, "Child %d terminated\n", pid);
       }
-    } while (pid>0);
+    } while (pid > 0);
 
     pid = fork();
     if (pid == 0) {
@@ -47,7 +47,7 @@ int main() {
   // Wait for all children to finish
   while (nchildren > 0) {
     fprintf(stderr, "Waiting for children\n");
-    pid_t pid = waitpid(-1, nullptr, WNOHANG);
+    pid_t pid = waitpid(-1, nullptr, 0);
     if (pid > 0) {
       nchildren--;
       fprintf(stderr, "Child %d terminated\n", pid);
