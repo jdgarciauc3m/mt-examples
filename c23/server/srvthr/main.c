@@ -2,8 +2,8 @@
 #include <string.h>
 
 // POSIX headers
-#include <semaphore.h>
 #include <pthread.h>
+#include <semaphore.h>
 
 // Server library
 #include "request.h"
@@ -12,16 +12,16 @@
 sem_t sem_nchilren;
 sem_t sem_request;
 
-void copy_request(request_t * dest, const request_t *src) {
+void copy_request(request_t * dest, const request_t * src) {
   dest->id = src->id;
   dest->kind = src->kind;
-  strcpy(dest->url,src->url);
+  strcpy(dest->url, src->url);
   dest->data = src->data;
 }
 
 void * service(void * arg) {
   request_t req;
-  copy_request(&req, (request_t*)arg);
+  copy_request(&req, (request_t *) arg);
   sem_post(&sem_request);
   fprintf(stderr, "Starting service for ID: %ld\n", req.id);
   process_request(&req);
@@ -35,18 +35,18 @@ void * service(void * arg) {
 void * receiver(void *) {
   constexpr int max_requests = 5;
   int num_in_service = 0;
-  request_t req;
-  pthread_t service_th;
 
   for (int i = 0; i < max_requests; i++) {
+    request_t req;
     receive_request(&req);
     num_in_service++;
+    pthread_t service_th;
     pthread_create(&service_th, nullptr, service, &req);
     sem_wait(&sem_request);
     pthread_detach(service_th);
   }
 
-  while (num_in_service>0) {
+  while (num_in_service > 0) {
     fprintf(stderr, "Waiting for children\n");
     sem_wait(&sem_nchilren);
     num_in_service--;
@@ -74,4 +74,3 @@ int main() {
   double diff = difftime(t2, t1);
   printf("Time: %lf", diff);
 }
-
