@@ -27,3 +27,6 @@ List of examples:
       using semaphores.
     - [multirwmut](multirwmut.md): A readers-writers example
       using mutexes and condition variables.
+- Server.
+-   - [requesthdl](requesthdl.md): A small library to simulate request handling.
+-   - [srvseq](srvsec.md): A simple server that handles requests sequentially.
