@@ -4,3 +4,4 @@ target_link_libraries(srvseq
         requesthdl
 )
 target_include_directories(srvseq PRIVATE ../requesthdl)
+install(TARGETS srvseq)
