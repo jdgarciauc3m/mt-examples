@@ -15,21 +15,27 @@ namespace server {
     // NOLINTBEGIN(cppcoreguidelines-avoid-non-const-global-variables)
     int request_id = 0;
     std::minstd_rand generator;
+    std::mutex generator_mutex;
     std::uniform_int_distribution<unsigned int> receive_time {0, max_receive_time};
     std::uniform_int_distribution<unsigned int> send_time {0, max_send_time};
     // NOLINTEND(cppcoreguidelines-avoid-non-const-global-variables)
+
+    unsigned int generate(std::uniform_int_distribution<unsigned int>& distribution) {
+      std::lock_guard const lock{generator_mutex};
+      return distribution(generator);
+    }
   }// namespace
 
   request receive_request() {
-    std::print(std::cerr, "Receiving request");
+    std::println(std::cerr, "Receiving request");
 
     request req {request_id++};
 
     // Simulate receiving a request
-    unsigned delay = receive_time(generator);                // Simulate a random delay
+    unsigned delay = generate(receive_time);                // Simulate a random delay
     std::this_thread::sleep_for(std::chrono::seconds(delay));// Simulate receive time
 
-    std::print(stderr, "Request received with ID: {} after {} seconds\n", req.id(), delay);
+    std::println(std::cerr, "Request received with ID: {} after {} seconds", req.id(), delay);
     return req;
   }
 
@@ -46,7 +52,7 @@ namespace server {
     std::println(std::cerr, "Replying to request with ID: {}", id());
 
     // Simulate replying to a request
-    auto delay = send_time(generator);                       // Simulate a random delay
+    auto delay = generate(send_time);                       // Simulate a random delay
     std::this_thread::sleep_for(std::chrono::seconds(delay));// Simulate send time
 
     std::println(std::cerr, "Request with ID: {} replied after {} seconds", id(), delay);
