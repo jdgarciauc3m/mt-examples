@@ -28,7 +28,9 @@ List of examples:
     - [multirwmut](multirwmut.md): A readers-writers example
       using mutexes and condition variables.
 - Server.
--   - [requesthdl](requesthdl.md): A small library to simulate request handling.
--   - [srvseq](srvseq.md): A simple server that handles requests sequentially.
--   - [srvproc](srvproc.md): A simple server that handles requests on new 
+    - [requesthdl](requesthdl.md): A small library to simulate request handling.
+    - [srvseq](srvseq.md): A simple server that handles requests sequentially
+    - [srvproc](srvproc.md): A simple server that handles requests on new 
       processes on demand.
+    - [srvthr](srvthr.md): A simple server that handles requests on new threads on 
+      demand.
