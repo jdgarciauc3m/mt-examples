@@ -12,6 +12,9 @@ struct request {
 
 typedef struct request request_t;
 
+void request_generator_init();
+void request_generator_cleanup();
+
 void receive_request(request_t *req);
 void process_request(request_t * req);
 void reply_request(request_t *req);
