@@ -2,6 +2,7 @@
 #include "request.hpp"
 
 #include <iostream>
+#include <mutex>
 #include <print>
 #include <thread>
 
@@ -14,6 +15,7 @@ namespace server {
     int request_id = 0;
     unsigned next_receive = 0;
     unsigned next_send = 0;
+    std::mutex generator_mutex;
     // NOLINTEND(cppcoreguidelines-avoid-non-const-global-variables)
 
   }// namespace
@@ -24,8 +26,10 @@ namespace server {
     request req {request_id++};
 
     // Simulate receiving a request
+    std::unique_lock lock{generator_mutex};
     unsigned delay = receive_times.at(next_receive);
     next_receive = (next_receive + 1) % receive_times.size();
+    lock.unlock();
     std::this_thread::sleep_for(std::chrono::seconds(delay));// Simulate receive time
 
     std::println(std::cerr, "Request received with ID: {} after {} seconds", req.id(), delay);
@@ -45,8 +49,10 @@ namespace server {
     std::println(std::cerr, "Replying to request with ID: {}", id());
 
     // Simulate replying to a request
+    std::unique_lock lock{generator_mutex};
     unsigned delay = send_times.at(next_send);
     next_send = (next_send + 1) % send_times.size();
+    lock.unlock();
     std::this_thread::sleep_for(std::chrono::seconds(delay));// Simulate send time
 
     std::println(std::cerr, "Request with ID: {} replied after {} seconds", id(), delay);

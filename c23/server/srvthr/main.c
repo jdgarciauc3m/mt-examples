@@ -61,6 +61,8 @@ void * receiver(void *) {
 int main() {
   time_t t1 = time(nullptr);
 
+  request_generator_init();
+
   sem_init(&sem_nchilren, 0, 0);
   sem_init(&sem_request, 0, 0);
   pthread_t receiver_th;
@@ -68,6 +70,8 @@ int main() {
   pthread_join(receiver_th, nullptr);
   sem_destroy(&sem_nchilren);
   sem_destroy(&sem_request);
+
+  request_generator_cleanup();
 
   time_t t2 = time(nullptr);
 

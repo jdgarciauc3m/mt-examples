@@ -74,6 +74,8 @@ void * service(void*) {
 int main() {
   time_t t1 = time(nullptr);
 
+  request_generator_init();
+
   pthread_mutex_init(&mutex_buffer, nullptr);
   pthread_cond_init(&not_full, nullptr);
   pthread_cond_init(&not_empty, nullptr);
@@ -96,6 +98,7 @@ int main() {
   pthread_cond_destroy(&not_full);
   pthread_cond_destroy(&not_empty);
   pthread_mutex_destroy(&mutex_mend);
+  request_generator_cleanup();
 
   time_t t2 = time(nullptr);
   double diff = difftime(t2, t1);
