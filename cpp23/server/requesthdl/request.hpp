@@ -8,6 +8,7 @@ namespace server {
 
   class request {
   public:
+    request() : request{0} {}
     request(long id_init) : id_(id_init) {}
 
     [[nodiscard]] long id() const { return id_; }
