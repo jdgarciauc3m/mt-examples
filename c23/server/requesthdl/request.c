@@ -2,21 +2,21 @@
 #include <stdio.h>
 
 // POSIX headers
-#include <limits.h>
-#include <stdlib.h>
 #include <unistd.h>
 
 static long request_id = 0;
-static constexpr int max_receive_time = 5;
+static constexpr unsigned receive_times[] = {3, 2, 3, 1, 4};
+static unsigned next_receive = 0;
 static constexpr long max_processing_iterations = 100'000'000;
-static constexpr int max_send_time = 20;
+static constexpr unsigned send_times[] = { 6, 15, 15, 12, 1};
+static unsigned next_send = 0;
 
 void receive_request(request_t *req) {
   fprintf(stderr, "Receiving request...\n");
   req->id = request_id++;
 
-    // Simulate receiving a request
-  unsigned delay = (unsigned)(rand() % max_receive_time) ; // Simulate a random delay
+  // Simulate receiving a request
+  unsigned delay = receive_times[next_receive++ % (sizeof(receive_times) / sizeof(receive_times[0]))];
   sleep(delay); // Simulate processing time
 
   fprintf(stderr, "Request received with ID: %ld after %d seconds\n", req->id, delay);
@@ -37,7 +37,7 @@ void reply_request(request_t *req) {
   fprintf(stderr, "Replying to request with ID: %ld\n", req->id);
 
   // Simulate replying to a request
-  unsigned delay = (unsigned)(rand() % max_send_time); // Simulate a random delay
+  unsigned delay = send_times[next_send++ % (sizeof(send_times) / sizeof(send_times[0]))];
   sleep(delay); // Simulate processing time
 
   fprintf(stderr, "Request with ID: %ld replied after %d seconds\n", req->id, delay);

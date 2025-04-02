@@ -34,3 +34,4 @@ List of examples:
       processes on demand.
     - [srvthr](srvthr.md): A simple server that handles requests on new threads on 
       demand.
+    - [srvthpool](srvthpool.md): A simple server that handles requests on a thread pool.
