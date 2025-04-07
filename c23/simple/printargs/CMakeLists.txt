@@ -1,0 +1,1 @@
+add_executable(printargs main.c)

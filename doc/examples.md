@@ -15,6 +15,9 @@ using C++23 features where possible.
 
 List of examples:
 
+- [simple](simple/readme.md): A set of very simple examples to illustrate the 
+  use of
+  threads.
 - [add_consecutive](add_consecutive.md): Spawns two threads that add consecutive
   numbers in two separate variables, and then prints the result.
 - Producer consumer.
