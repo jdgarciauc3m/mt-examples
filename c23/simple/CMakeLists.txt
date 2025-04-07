@@ -1,0 +1,6 @@
+add_subdirectory(printargs)
+add_subdirectory(printmsg)
+add_subdirectory(racevar)
+add_subdirectory(fixracevar)
+add_subdirectory(dynth)
+add_subdirectory(dynthalloc)

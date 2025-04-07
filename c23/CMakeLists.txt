@@ -1,3 +1,7 @@
+# Simple examples
+add_subdirectory(simple)
+
+# Add consecutive example
 add_subdirectory(add_consecutive)
 
 # Producer-consumer examples
